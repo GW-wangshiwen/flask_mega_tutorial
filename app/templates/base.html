@@ -4,21 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- CSS FILES -->        
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/css/uikit.min.css">    
+    <!-- JS FILES  -->    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
+
     {% if title %}
         <title>{{ title }}</title>
     {% else %}
-        <title>Welcome</title>
-    {% endif %}        
+        <title>New Page</title>
+    {% endif %}    
+
+    <!--HEADER-->
+    <header class="uk-box-shadow-small" style="background-color: white">
+        <div class="uk-container uk-container-expand">
+            <nav class="uk-navbar" id="navbar" data-uk-navbar>
+                <div class="uk-navbar-left uk-visible@m">                        
+                    <a class="uk-navbar-item uk-logo" href="../static/img/logo.svg" target="_blank">
+                        <img src="../static/img/logo.svg" alt="" width="200" height="40">
+                    </a>
+                </div>
+                
+                <div class="uk-navbar-right">
+                    <ul class="uk-navbar-nav uk-visible@s">
+                        <!-- <li class="uk-active"><a href="#">Active</a></li> -->
+                        <li  class="uk-box-shadow-hover-small"><a href="{{ url_for('files') }}">&nbspTASK&nbsp</a></li>
+                        <li  class="uk-box-shadow-hover-small"><a href="{{ url_for('symbols') }}">SYMBOLS</a></li>
+                        <li class="uk-box-shadow-hover-small"><a href="{{ url_for('xml') }}">&nbsp&nbsp&nbspXML&nbsp&nbsp&nbsp</a></li>
+                        <!-- <li><a href="#">Contact Us</a></li> -->
+                    </ul>
+                    <div class="uk-navbar-item  uk-visible@s">
+                        <!-- <a class="uk-navbar-toggle uk-hidden@m" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a> -->
+                        <a href="{{ url_for('login') }}" class="uk-button uk-button-primary"><span data-uk-icon="log-in"></span>LOG IN</a>
+                    </div>
+                    
+                </div>
+                <a class="uk-navbar-toggle uk-hidden@s" uk-toggle="target: #offcanvas-overlay" data-uk-navbar-toggle-icon></a>
+                <span class="uk-navbar-brand uk-navbar-center uk-hidden@s"><h2>CONTROOLER TUNING</h2></span>
+            </nav>            
+        </div>
+    </header>  
+
+    <div id="offcanvas-overlay" uk-offcanvas="overlay: true">
+        <div class="uk-offcanvas-bar">
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+            <div class="uk-nav">
+                <li  class="uk-box-shadow-hover-small"><a href="{{ url_for('files') }}">TASK</a></li>
+                <li  class="uk-box-shadow-hover-small"><a href="{{ url_for('symbols') }}">SYMBOLS</a></li>
+                <li class="uk-box-shadow-hover-small"><a href="{{ url_for('xml') }}">XML</a></li>
+                <li class="uk-box-shadow-hover-small"><a href="{{ url_for('login') }}">SIGN IN</a></li>
+            </div>
+            
+        </div>
+    </div>
+
 </head>
 <body>
-    <div>
-        <a href="/index">Home</a>
-        <a href="/login">Login</a>
-    </div>
-    <hr>
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    {% endwith %}
+
+    <!-- <hr> -->
     {% block content %}
     
     {% endblock  %}
+
+    {% block footer %}
     
+    {% endblock  %}
 </body>
+
 </html>

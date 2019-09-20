@@ -1,0 +1,38 @@
+{% extends 'base_flexible_footer.html' %}
+
+{% block content %}
+
+    <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+        <div>
+            <div class="uk-card uk-card-default uk-card-body">Item</div>
+        </div>
+        <div>
+            <div class="uk-card uk-card-default uk-card-body">Item</div>
+        </div>
+        <div>
+            <div class="uk-card uk-card-default uk-card-body">Item</div>
+        </div>
+    </div>
+
+    <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match uk-margin-small" uk-grid>
+        <div>
+            <div class="uk-card k-card-hover uk-card-default uk-card-body uk-margin-small">
+                <h3 class="uk-card-title">Default</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+        <div>
+            <div class="uk-card k-card-hover uk-card-primary uk-card-body uk-margin-small">
+                <h3 class="uk-card-title">Primary</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+        <div>
+            <div class="uk-card k-card-hover uk-card-secondary uk-card-body uk-margin-small">
+                <h3 class="uk-card-title">Secondary</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+    </div>
+    
+{% endblock  %}
